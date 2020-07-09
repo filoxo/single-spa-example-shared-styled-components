@@ -39,6 +39,26 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.3.1/dist/extras/amd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.3.1/dist/extras/named-exports.min.js"></script>
   <% } %>
+  <script>
+    // This workaround is for Webpack failing to properly interop with System format externals
+    // This is a workaround for Webpack 4 https://github.com/react-microfrontends/api/issues/1#issuecomment-594289086
+    // but could also be resolved by upgrading to Webpack 5, which is still in beta at the time of this commit.
+    (function() {
+      const originalInstantiate = System.constructor.prototype.instantiate;
+      System.constructor.prototype.instantiate = function() {
+        return originalInstantiate
+          .apply(this, arguments)
+          .then(function(register) {
+            const originalFn = register[1];
+            register[1] = function(_export) {
+              _export("__esModule", true);
+              return originalFn.apply(this, arguments);
+            };
+            return register;
+          });
+      };
+    })();
+  </script>
 
   <template id="single-spa-layout">
     <single-spa-router>
