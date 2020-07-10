@@ -4,7 +4,7 @@ styled-components poses a problem in a single-spa microfrontends implementation 
 
 ### Setup
 
-- git clone
+- `git clone git@github.com:filoxo/single-spa-example-shared-styled-components.git`
 - run `yarn setup`
 
 ### Running
