@@ -17,18 +17,18 @@ styled-components poses a problem in a single-spa microfrontends implementation 
 
 ## How this was accomplished
 
-1. Add `navbar` and `styleguide` modules to import map
+1. Add `navbar` and `styleguide` modules to import map (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/dc53a4dca01fddad61f54bde0c5423a524dbdc89)
 1. Implement `styleguide`
-   1. Install `react` and `styled-components` to styleguide
-   1. Add `styled-components` to Webpack externals (so that it is not bundled)
-   1. Create and export styled components from styleguide (eg. `Button`)
-1. Add `styled-components` and `react-is` to importmap
-1. Add workaround for Webpack System external interop bug
+   1. Install `react` and `styled-components` to styleguide (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/9e799b3e1ebfc84939b32882f109df069c16ed1c)
+   1. Add `styled-components` to Webpack externals (so that it is not bundled) (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/6f70b10b500a65e21dd9d49e2d8e08f7e8db9ef0)
+   1. Create and export styled components from styleguide (eg. `Button`) (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/4603309ee7a38d00caf8c62007bc83f3c7dbd882)
+1. Add `styled-components` and `react-is` to importmap (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/05188d33ef99f1b7a1d73a875024fc7f1b02e9c7)
+1. Add workaround for Webpack System external interop bug (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/04a8a78bc73226a7fee2c756e5d1e5a9f3d36899)
    In some future, this could be solved 3 ways:
    - Use the workaround code if using Webpack ~4
    - Upgrade to Webpack 5
    - [Implement and use a System build of styled-components](https://github.com/esm-bundle/new-repo-instructions)
-1. Import and use styleguide components in navbar, eg. `import { Button } from '@filoxo/styleguide'`
+1. Import and use styleguide components in navbar, eg. `import { Button } from '@filoxo/styleguide'` (https://github.com/filoxo/single-spa-example-shared-styled-components/commit/69caa41709e309fe919dcde7ccee62b0618d9512)
 1. Celebrate good times 🎉
 
 ## Additional notes
