@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "single-spa example that has styled-components as a shared dependency",
   "scripts": {
-    "setup": "run-p install:*",
+    "setup": "run-s install:*",
     "install:root-config": "yarn install --prefix root-config",
     "install:styleguide": "yarn install --prefix styleguide",
     "install:navbar": "yarn install --prefix navbar",
