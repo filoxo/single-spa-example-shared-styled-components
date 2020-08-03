@@ -23,14 +23,6 @@ styled-components poses a problem in a single-spa microfrontends implementation 
    1. Add `styled-components` to Webpack externals (so that it is not bundled) ([6f70b10](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/6f70b10b500a65e21dd9d49e2d8e08f7e8db9ef0))
    1. Create and export styled components from styleguide (eg. `Button`) ([4603309](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/4603309ee7a38d00caf8c62007bc83f3c7dbd882))
 1. Add `styled-components` and `react-is` to importmap ([05188d3](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/05188d33ef99f1b7a1d73a875024fc7f1b02e9c7))
-1. Add workaround for Webpack System external interop bug ([04a8a78](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/04a8a78bc73226a7fee2c756e5d1e5a9f3d36899))
-
-   In some future, this could be solved 3 ways:
-
-   - Use the workaround code if using Webpack ~4
-   - Upgrade to Webpack 5
-   - [Implement and use a System build of styled-components](https://github.com/esm-bundle/new-repo-instructions)
-
 1. Import and use styleguide components in navbar, eg. `import { Button } from '@filoxo/styleguide'` ([69caa41](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/69caa41709e309fe919dcde7ccee62b0618d9512))
 1. Celebrate good times 🎉
 
@@ -38,7 +30,6 @@ styled-components poses a problem in a single-spa microfrontends implementation 
 
 - These are implemented within the same repo **for illustration purposes**. In an organizational setting, each of the modules should be in its own repo.
 - While the styleguide uses styled-components, I chose to implement the local styles for navbar using CSS modules to show that applications can be autonomous when choosing which style technologies they'd like to use.
-- The "Webpack System external interop" bug is unrelated to styled-components. Its simply an artifact of module interop.
 - How to test applications that consume styleguide components is not ideal, and something that will hopefully change in the future.
   - ESM support in Jest is planned
   - maybe it would be possible to create a Systemjs module resolver?
