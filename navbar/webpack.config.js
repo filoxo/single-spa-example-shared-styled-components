@@ -34,6 +34,12 @@ module.exports = (webpackConfigEnv) => {
                 },
               },
             },
+            {
+              loader: require.resolve("css-loader"),
+              options: {
+                modules: true,
+              },
+            },
           ],
         },
       ],
