@@ -40,7 +40,5 @@ module.exports = (webpackConfigEnv) => {
     },
   });
 
-  console.dir(config.module.rules, { depth: null });
-
   return config;
 };
