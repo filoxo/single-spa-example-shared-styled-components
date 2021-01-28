@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Root Config</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src <% if(isLocal) { %> 'unsafe-eval' <% } %> 'unsafe-inline' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
   <meta name="importmap-type" content="systemjs-importmap" />
   <style>
     /* Critical css */
@@ -17,11 +17,11 @@
   <script type="systemjs-importmap">
     {
       "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.5.0/lib/system/single-spa.min.js",
-        "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
-        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
-        "react-is": "https://unpkg.com/react-is@16.13.1/umd/react-is.production.min.js",	
-        "styled-components": "https://unpkg.com/styled-components@5.1.1/dist/styled-components.min.js" 
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@17.0.1/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.1/umd/react-dom.production.min.js",
+        "react-is": "https://unpkg.com/react-is@17.0.1/umd/react-is.production.min.js",	
+        "styled-components": "https://unpkg.com/styled-components@5.2.1/dist/styled-components.min.js" 
       }
     }
   </script>
@@ -36,15 +36,13 @@
       }
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@1.14.6/dist/import-map-overrides.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.1/dist/system.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.1/dist/extras/amd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.1/dist/extras/named-exports.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.3.0/dist/import-map-overrides.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
   <% } else { %>
-  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@1.14.6/dist/import-map-overrides.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.1/dist/system.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.1/dist/extras/amd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.1/dist/extras/named-exports.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.3.0/dist/import-map-overrides.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
   <% } %>
 
   <template id="single-spa-layout">
