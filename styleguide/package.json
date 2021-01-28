@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --port 9001",
+    "start": "webpack serve --port 9001",
     "build": "webpack --mode=production",
     "analyze": "webpack --mode=production --env.analyze=true",
     "lint": "eslint src --ext js",
-    "format": "prettier --write './**'",
+    "format": "prettier --write src/",
     "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
     "watch-tests": "cross-env BABEL_ENV=test jest --watch",
     "coverage": "cross-env BABEL_ENV=test jest --coverage"
