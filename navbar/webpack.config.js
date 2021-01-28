@@ -1,21 +1,49 @@
 const singleSpaDefaults = require("webpack-config-single-spa-react");
+const { mergeWithRules } = require("webpack-merge");
+
+const mergeRulesWithMatchingTest = mergeWithRules({
+  module: {
+    rules: {
+      test: "match",
+      use: {
+        loader: "match",
+        options: "replace",
+      },
+    },
+  },
+});
 
 module.exports = (webpackConfigEnv) => {
-  const config = singleSpaDefaults({
+  const defaultConfig = singleSpaDefaults({
     orgName: "filoxo",
     projectName: "navbar",
     webpackConfigEnv,
   });
 
-  // Override rule for handling css to enable CSS Modules
-  config.module.rules.forEach((rule, ruleIndex) => {
-    if (rule.test && rule.test.toString() === /\.css$/i.toString()) {
-      rule.use.forEach((use, useIndex) => {
-        if (use.loader.includes("css-loader")) {
-          config.module.rules[ruleIndex].use[useIndex].options.modules = true;
-        }
-      });
-    }
+  const config = mergeRulesWithMatchingTest(defaultConfig, {
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: [
+            {
+              loader: require.resolve("style-loader"),
+              options: {
+                modules: {
+                  namedExport: false,
+                },
+              },
+            },
+            {
+              loader: require.resolve("css-loader"),
+              options: {
+                modules: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
   });
 
   return config;

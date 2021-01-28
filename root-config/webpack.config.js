@@ -1,6 +1,14 @@
-const webpackMerge = require("webpack-merge");
+const { mergeWithCustomize, unique } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const merge = mergeWithCustomize({
+  customizeArray: unique(
+    "plugins",
+    ["HtmlWebpackPlugin"],
+    (plugin) => plugin.constructor && plugin.constructor.name
+  ),
+});
 
 module.exports = (webpackConfigEnv) => {
   const orgName = "filoxo";
@@ -10,7 +18,7 @@ module.exports = (webpackConfigEnv) => {
     webpackConfigEnv,
   });
 
-  return webpackMerge.smart(defaultConfig, {
+  return merge(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
     devServer: {
       historyApiFallback: true,
@@ -20,7 +28,7 @@ module.exports = (webpackConfigEnv) => {
         inject: false,
         template: "src/index.ejs",
         templateParameters: {
-          isLocal: webpackConfigEnv && webpackConfigEnv.isLocal === "true",
+          isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
         },
       }),
