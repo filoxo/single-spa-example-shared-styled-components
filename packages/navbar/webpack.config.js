@@ -28,11 +28,6 @@ module.exports = (webpackConfigEnv) => {
           use: [
             {
               loader: require.resolve("style-loader"),
-              options: {
-                modules: {
-                  namedExport: false,
-                },
-              },
             },
             {
               loader: require.resolve("css-loader"),
