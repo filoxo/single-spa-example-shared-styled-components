@@ -1,4 +1,5 @@
 {
+  "name": "@filoxo/root-config",
   "scripts": {
     "start": "webpack serve --mode=development --port 9000 --env isLocal",
     "lint": "eslint src --ext js",
