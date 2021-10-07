@@ -5,11 +5,19 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start": "lerna run start --stream",
+    "prebuild": "rm -rf deploy && mkdir deploy deploy/auth deploy/home deploy/login deploy/navbar",
+    "build": "lerna run build",
+    "postbuild": "cp packages/root-config/dist/* deploy && cp packages/auth/dist/* deploy/auth && cp packages/home/dist/* deploy/home && cp packages/login/dist/* deploy/login && cp packages/navbar/dist/* deploy/navbar",
+    "deploy": "yarn bootstrap && yarn build",
+    "preserve": "yarn build",
+    "serve": "npx serve deploy -s -n -C"
   },
   "keywords": [
     "single-spa",
     "example",
-    "styled-components"
+    "styled-components", 
+    "singleton",
+    "utility module"
   ],
   "author": "@filoxo",
   "license": "MIT",
