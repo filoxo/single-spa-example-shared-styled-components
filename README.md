@@ -5,7 +5,7 @@ styled-components poses a problem in a single-spa microfrontends implementation 
 ### Setup
 
 - `git clone git@github.com:filoxo/single-spa-example-shared-styled-components.git`
-- run `yarn bootstrap`
+- run `yarn install` and then `yarn bootstrap`
 
 ### Running
 
@@ -21,11 +21,10 @@ styled-components poses a problem in a single-spa microfrontends implementation 
 1. Implement `styleguide`
    1. Install `react` and `styled-components` to styleguide ([9e799b3](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/9e799b3e1ebfc84939b32882f109df069c16ed1c))
    1. Add `styled-components` to Webpack externals (so that it is not bundled) ([6f70b10](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/6f70b10b500a65e21dd9d49e2d8e08f7e8db9ef0))
-      - Why not also include `react`? Because this is already in the externals array setup by webpack-config-single-spa-react so no need to duplicate it here. 
+      - Why not also include `react` and `single-spa` too? Because they are already in the externals array setup by webpack-config-single-spa-react/webpack-config-single-spa respectively so no need to duplicate it here.
    1. Create and export styled components from styleguide (eg. `Button`) ([4603309](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/4603309ee7a38d00caf8c62007bc83f3c7dbd882))
-      - Note: this is a `System` format build of styled-components (https://github.com/esm-bundle/styled-components), as a UMD bundle does not have dependencies externalized.
 1. Add `styled-components` and `react-is` to importmap ([05188d3](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/05188d33ef99f1b7a1d73a875024fc7f1b02e9c7))
-    - Why is `react-is` necessary? This is because react-is is also dependent on specific versions of React, so it is decoupled from the styled-components build so it can be upgraded along with React.
+    - Why is `react-is` necessary? This is because react-is is also dependent on specific versions of React, so it is decoupled from styled-components' dependencies so it can be provided externally and upgraded along with React.
 1. Import and use styleguide components in navbar, eg. `import { Button } from '@filoxo/styleguide'` ([69caa41](https://github.com/filoxo/single-spa-example-shared-styled-components/commit/69caa41709e309fe919dcde7ccee62b0618d9512))
 1. Celebrate good times 🎉
 
